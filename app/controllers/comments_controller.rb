@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
-	http_basic_authenticate_with name: "akshay", password: "123
-	4", only: [:destroy]
+	http_basic_authenticate_with name: "pilania", password: "8860", only: [:destroy]
 	def create
 		@post = Post.find(params[:post_id])
-		@comment = @post.comments.create(comment_params)
-		redirect_to post_path(@post) 
+		@comment = @post.comments
+		if @comment.create(comment_params)
+			redirect_to post_path(@post)
+		else 
+			render @post
+		end
 	end
 
 	def destroy

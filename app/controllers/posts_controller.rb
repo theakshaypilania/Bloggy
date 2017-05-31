@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-	http_basic_authenticate_with name: "akshay",password: "1234", except: [:index, :show]
-
+	http_basic_authenticate_with name: "pilania",password: "8860", except: [:index, :show]
 	before_action :find_post,only:[:show, :edit, :update, :destroy]
 	
 	def index
