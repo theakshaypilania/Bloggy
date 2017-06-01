@@ -1,7 +1,10 @@
-<%= link_to "Back",posts_path, :class => 'btn btn-primary'%>
+<%= link_to "Back",posts_path, :class => 'btn btn-sm btn-primary'%>
+<div class="well-sm">
 <h2><%= @post.title %></h2>
-<p><%= @post.body %></p>
+<p><div class="well"><%= @post.body %></div></p>
+<small><strong>Posted at : </strong><%=@post.created_at.strftime("%d %b %y") %></small></div>
 <hr>
+
 <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning' %>
 <%= link_to "Delete", post_path(@post),
 				method: :delete,
@@ -10,7 +13,7 @@
 
 <hr>
 
-
+<!--need to add date and time for comments and post -->
 
 <%= render 'partials/comments' %>
 <%= render 'partials/form' %>

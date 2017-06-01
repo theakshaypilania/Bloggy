@@ -1,9 +1,12 @@
 <h3>Comments</h3>
 <% @post.comments.each do |comment| %>
 	<div class="well">
-		<p><strong><%= comment.username %></strong>:<%=comment.body %> 
-		<%= link_to '[X]', [comment.post, comment],
+		<p><strong><%= comment.username %>&nbsp</strong>:&nbsp<%=comment.body %> <br>
+		<small><%=comment.created_at.strftime("%d %b %y") %></small>
+		<%= link_to "Edit",  edit_post_comment_path(comment.post,comment), :class => 'btn btn-xs btn-warning' %>
+		<%= link_to 'Delete', [comment.post, comment],
 					method: :delete,
-					data: { confirm: 'Are you sure?'}%></p>
+					data: { confirm: 'Are you sure?'},
+					:class => 'btn btn-xs btn-danger'%></p>
 	</div>
 <% end %>
