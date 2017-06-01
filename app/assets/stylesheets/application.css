@@ -22,14 +22,9 @@
 	{
 		display: none;
 	}
-.well:hover .btn-xs
+.well:hover .btn-xs, .well:active .btn-xs
 	{
 		
-		display: inline-block;
-	}
-
-.well:active .btn-xs
-	{
 		display: inline-block;
 	}
 
