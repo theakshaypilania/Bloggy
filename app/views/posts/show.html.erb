@@ -1,8 +1,14 @@
 <%= link_to "Back",posts_path, :class => 'btn btn-sm btn-primary'%>
 <div class="well-sm">
 <h2><%= @post.title %></h2>
-<p><div class="well"><%= @post.body %></div></p>
-<small><strong>Posted at : </strong><%=@post.created_at.strftime("%d %b %y") %></small></div>
+<p>
+	<div class="well"><%= @post.body %></div>
+</p>
+<small>
+	<strong>Posted : </strong>
+	<%= time_ago_in_words(@post.created_at)%> ago
+</small>
+</div>
 <hr>
 
 <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning' %>
@@ -13,7 +19,9 @@
 
 <hr>
 
-<!--need to add date and time for comments and post -->
+<div id="comments">
+	<h2><%= @post.comments.count %> Comments</h2>
+</div>
 
 <%= render 'partials/comments' %>
 <%= render 'partials/form' %>

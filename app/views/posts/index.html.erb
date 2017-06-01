@@ -4,5 +4,11 @@
 		<h3><%= post.title %></h3>
 		<p><%= truncate(post.body, :length => 35) %></p>
 		<%= link_to "Read More", post_path(post), :class => 'btn btn-default' %>
+		<small class='right'>
+			<strong>Posted : </strong>
+		<%= post.created_at.strftime("%B %d, %Y")%>
+		</small>
 	</div>
 <% end %>
+
+	

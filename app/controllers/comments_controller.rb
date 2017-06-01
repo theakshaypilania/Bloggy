@@ -1,5 +1,11 @@
 class CommentsController < ApplicationController
 	http_basic_authenticate_with name: "pilania", password: "8860", only: [:destroy]
+
+	def show
+		@post = Post.find(params[:post_id])
+		@comment = @post.comments.find(params[:id])
+	end
+
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments
@@ -7,7 +13,7 @@ class CommentsController < ApplicationController
 			flash[:success]='Comment created successfully'
 			redirect_to post_path(@post) 
 		else 
-			render @post
+			render @post 
 		end
 	end
 
