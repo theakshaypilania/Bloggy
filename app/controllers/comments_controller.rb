@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	http_basic_authenticate_with name: "pilania", password: "8860", only: [:destroy]
+	before_action :authenticate_user!, except: [:show]
 
 	def show
 		@post = Post.find(params[:post_id])
