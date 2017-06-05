@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
 	def show
 		@comments = Comment.where(post_id: @post)
+		@user= @post.user
 	end
 
 	def new

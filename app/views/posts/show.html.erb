@@ -7,7 +7,7 @@
 <small>
 	<strong>Posted : </strong>
 	<%= time_ago_in_words(@post.created_at)%> ago by
-	<%= @post.user.username %>
+	<%= link_to @post.user.username,user_path(@user) %>
 </small>
 </div>
 <hr>
