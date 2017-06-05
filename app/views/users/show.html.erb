@@ -1,0 +1,28 @@
+<%= link_to "Back",url_for(:back), :class => 'btn btn-sm btn-primary'%>
+<br><br>
+<div class="well">
+	<h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
+
+	<div class="details">
+		<ul>
+			<li>
+				<h3>Posts: <%= @user.posts.count %></h3>
+			</li>
+			<li>
+				<h3>Account Created at: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+			</li>
+			<li>
+				<h3>Username: <%= @user.username %></h3>
+			</li>
+			<li>
+				<h3>Birthday: <%= @user.birthday %></h3>
+			</li>
+			<li>
+				<h3>Email: <%= @user.email %></h3>
+			</li>
+			<li>
+				<h3>Last signed in about: <%= time_ago_in_words(@user.last_sign_in_at) %> ago</h3>
+			</li>
+		</ul>
+	</div>
+</div>
