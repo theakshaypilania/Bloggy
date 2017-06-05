@@ -6,21 +6,21 @@
 </p>
 <small>
 	<strong>Posted : </strong>
-	<%= time_ago_in_words(@post.created_at)%> ago
+	<%= time_ago_in_words(@post.created_at)%> ago by
+	<%= @post.user.username %>
 </small>
 </div>
 <hr>
-
-<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning' %>
-<%= link_to "Delete", post_path(@post),
-				method: :delete,
-				data: {confirm: 'Are you sure?'},
-				:class => 'btn btn-danger' %>
-
+<% if @post.user == current_user%>
+	<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning' %>
+	<%= link_to "Delete", post_path(@post),
+					method: :delete,
+					data: {confirm: 'Are you sure?'},
+					:class => 'btn btn-danger' %>
 <hr>
-
+<%end%>
 <div id="comments">
-	<h2><%= @post.comments.count %> Comments</h2>
+	<h2><%= pluralize(@post.comments.count,"Comment") %></h2>
 </div>
 
 <%= render 'comments/partials/comments' %>

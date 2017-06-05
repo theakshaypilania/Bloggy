@@ -1,13 +1,20 @@
-<% @post.comments.each do |comment| %>
+<% @comments.each do |comment| %>
 	<div class="well">
-		<p><strong><%= comment.username %>&nbsp</strong>:&nbsp<%=comment.body %> <br>
+		<p><strong><%= comment.user.username %>&nbsp</strong>:&nbsp<%=comment.body %> <br>
 		<small><%= time_ago_in_words(comment.created_at) %> ago</small>
-		<div class="show">
-		<%= link_to "Edit",  edit_post_comment_path(comment.post,comment), :class => 'btn btn-xs btn-warning' %>
-		<%= link_to 'Delete', [comment.post, comment],
-					method: :delete,
-					data: { confirm: 'Are you sure?'},
-					:class => 'btn btn-xs btn-danger'%></div>
+		<% if (user_signed_in? && (current_user.id == comment.user_id || current_user.id == comment.post.user_id))%>
+			<div class="show">
+			  
+			  <%if (current_user.id == comment.user_id)%>
+				<%= link_to "Edit",  edit_post_comment_path(comment.post,comment), :class => 'btn btn-xs btn-warning' %>
+				<% end %>
+
+				<%= link_to 'Delete', [comment.post, comment],
+							method: :delete,
+							data: { confirm: 'Are you sure?'},
+							:class => 'btn btn-xs btn-danger'%>
+			</div>
+		<%end%>
 		</p>
 	</div>
 <% end %>

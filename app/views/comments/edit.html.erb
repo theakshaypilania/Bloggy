@@ -1,12 +1,13 @@
 <h3>Edit Comment</h3>
 <%= form_for([@post, @comment]) do |f| %>
+
+	<%= f.hidden_field :user_id , :value => current_user.id%>
+
 	<p>
-		<%= f.label :username %><br>
-		<%= f.text_field(:username, {:class => 'form-control'}) %>
+		<p class="comment_name green-text"><strong><%=current_user.username%></strong></p><br>
 	</p>
 	<p>
-		<%= f.label :body %><br>
-		<%= f.text_area(:body, {:class => 'form-control'}) %>
+		<%= f.text_area(:body, class: 'form-control',placeholder: 'Write comment here') %>
 	</p>
 		<%= f.submit({:class => 'btn btn-default'}) %>
 <% end %>
